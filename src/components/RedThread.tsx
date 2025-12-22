@@ -14,7 +14,10 @@ export default function RedThread() {
     const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
 
     useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
         const calculatePath = () => {
+            // Check width inside calculation to be safe, but we rely on existing state mostly
             const sortedNodes = Array.from(nodes.values()).sort((a: HTMLElement, b: HTMLElement) => {
                 const boxA = a.getBoundingClientRect();
                 const boxB = b.getBoundingClientRect();
@@ -47,21 +50,19 @@ export default function RedThread() {
             setPathd(d);
         };
 
-        // Use ResizeObserver for efficient updates
-        const observer = new ResizeObserver(() => {
-            calculatePath();
-        });
+        const handleResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(calculatePath, 150); // Debounce by 150ms
+        };
 
-        observer.observe(document.body);
-        window.addEventListener("resize", calculatePath);
+        window.addEventListener("resize", handleResize);
 
-        // Initial calc
-        // Small timeout to ensure layout is settled
+        // Initial calc with slight delay to ensure layout
         const timer = setTimeout(calculatePath, 100);
 
         return () => {
-            observer.disconnect();
-            window.removeEventListener("resize", calculatePath);
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(timeoutId);
             clearTimeout(timer);
         };
     }, [nodes]);
@@ -76,7 +77,8 @@ export default function RedThread() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    if (isMobile || ["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
+    // USP: Thread must be visible on all devices, but optimized.
+    if (["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
 
     return (
         <motion.div
