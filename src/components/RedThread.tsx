@@ -76,7 +76,7 @@ export default function RedThread() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    if (["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
+    if (isMobile || ["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
 
     return (
         <motion.div
