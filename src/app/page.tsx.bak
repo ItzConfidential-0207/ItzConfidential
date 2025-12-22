@@ -1,0 +1,76 @@
+import Hero from "@/components/Hero";
+import CaseFile from "@/components/CaseFile";
+
+// Dummy Data
+const CASES = [
+  {
+    id: "001",
+    title: "The Silent Witness",
+    summary: "A body found in a locked room. No weapon, no footprints. Only a single red thread left behind. Can you untangle the lies?",
+    difficulty: 2,
+    time: "60 Mins",
+    players: "1-4"
+  },
+  {
+    id: "002",
+    title: "Midnight Symphony",
+    summary: "The conductor died during the crescendo. The entire orchestra is suspect. Listen closely to the evidence.",
+    difficulty: 3,
+    time: "90 Mins",
+    players: "2-6"
+  },
+  {
+    id: "003",
+    title: "Project: ECHO",
+    summary: "A rogue AI has taken over the facility. You have 60 minutes to crack the code before the lockdown seals you in forever.",
+    difficulty: 4,
+    time: "60 Mins",
+    players: "1-5"
+  },
+  {
+    id: "004",
+    title: "The Last Heir",
+    summary: "A billion-dollar inheritance. Seven greedy relatives. One poisoned chalice. Identify the killer before the will is read.",
+    difficulty: 3,
+    time: "120 Mins",
+    players: "3-8"
+  },
+  {
+    id: "005",
+    title: "Cold Case: 1984",
+    summary: "New DNA evidence has surfaced for the city's most infamous unsolved crime. Does the old detective's diary hold the key?",
+    difficulty: 5,
+    time: "180 Mins",
+    players: "1-4"
+  },
+  {
+    id: "006",
+    title: "The vanishing Act",
+    summary: "A magician disappears mid-performance. Is it the greatest trick ever pulled, or a meticulously planned murder?",
+    difficulty: 2,
+    time: "45 Mins",
+    players: "2-5"
+  }
+];
+
+import dynamic from 'next/dynamic';
+import Footer from "@/components/Footer";
+import CaseBoard from "@/components/CaseBoard";
+
+const SuspectLineup = dynamic(() => import('@/components/SuspectLineup'), {
+  loading: () => <div className="h-96 w-full flex items-center justify-center font-mono text-gray-700">LOADING EVIDENCE...</div>
+});
+
+export default function Home() {
+  return (
+    <main className="flex flex-col items-center pb-0 text-white">
+      <Hero />
+
+      <CaseBoard cases={CASES} />
+
+
+      <SuspectLineup />
+      <Footer />
+    </main>
+  );
+}
