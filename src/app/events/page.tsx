@@ -141,7 +141,7 @@ export default function EventsPage() {
                     </section>
 
                     {/* 4. Infinite Media Tape */}
-                    <section className="full-width-breakout relative" style={{ marginTop: '80px' }}>
+                    <section className="-mx-5 md:-mx-14 lg:-mx-16 relative" style={{ marginTop: '80px' }}>
                         <div className="bg-yellow-400/10 border-y-4 border-yellow-500 py-12 relative overflow-hidden">
                             {/* Film Strip Holes */}
                             <div className="absolute top-2 left-0 w-full h-4 bg-[url('/film-holes.png')] opacity-50 bg-repeat-x"></div>

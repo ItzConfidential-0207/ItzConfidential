@@ -5,7 +5,10 @@ import Link from "next/link";
 
 export default function DetectivesPage() {
     return (
-        <main className="min-h-screen bg-black text-gray-300 font-mono relative overflow-hidden flex items-center justify-center p-4 pt-36 md:pt-48">
+        <main
+            className="min-h-screen bg-black text-gray-300 font-mono relative overflow-hidden flex flex-col items-center p-4"
+            style={{ paddingTop: '100px' }}
+        >
             {/* Background Texture */}
             <div
                 className="absolute inset-0 opacity-20 pointer-events-none"
@@ -22,7 +25,7 @@ export default function DetectivesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-6xl w-full bg-[#111] border border-gray-800 relative shadow-[0_0_50px_rgba(0,0,0,0.8)] p-5 md:p-14 lg:p-16"
+                className="max-w-6xl w-full bg-[#111] border border-gray-800 relative shadow-[0_0_50px_rgba(0,0,0,0.8)] mt-5 p-5 md:p-14 lg:p-16"
             >
                 {/* Top Secret Stamp */}
                 <div className="absolute top-8 right-8 border-4 border-red-800/50 rounded-sm p-2 rotate-[-15deg] opacity-50 pointer-events-none">
