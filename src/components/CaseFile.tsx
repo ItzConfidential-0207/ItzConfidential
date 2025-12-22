@@ -37,7 +37,7 @@ export default function CaseFile({ id, title, difficulty, players, summary, imag
             }}
         >
             {/* Paper Texture Overlay (Subtle) */}
-            <div className="absolute inset-0 pointer-events-none opacity-40 bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')] mix-blend-multiply z-10"></div>
+            <div className="absolute inset-0 pointer-events-none opacity-40 bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')] md:mix-blend-multiply z-10"></div>
 
             {/* The Pin Point for the Red Thread - Positioned centered at top */}
             <div
@@ -49,10 +49,10 @@ export default function CaseFile({ id, title, difficulty, players, summary, imag
             </div>
 
             {/* Tape Effect - Holding the photo */}
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-8 bg-[#fdfeba] opacity-90 rotate-[-2deg] shadow-sm z-40 mask-tape backdrop-blur-[1px] border-l border-r border-white/20"></div>
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-28 h-8 bg-[#fdfeba] opacity-90 rotate-[-2deg] shadow-sm z-40 mask-tape md:backdrop-blur-[1px] border-l border-r border-white/20"></div>
 
             {/* Case Stamp */}
-            <div className="absolute bottom-24 right-4 border-[3px] border-red-800/70 text-red-800/70 p-2 font-header text-xs tracking-[0.2em] font-bold uppercase -rotate-12 mask-ink z-20 mix-blend-multiply pointer-events-none">
+            <div className="absolute bottom-24 right-4 border-[3px] border-red-800/70 text-red-800/70 p-2 font-header text-xs tracking-[0.2em] font-bold uppercase -rotate-12 mask-ink z-20 md:mix-blend-multiply pointer-events-none">
                 Confidential
             </div>
 

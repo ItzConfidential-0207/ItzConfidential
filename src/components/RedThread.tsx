@@ -67,6 +67,14 @@ export default function RedThread() {
     }, [nodes]);
 
     const pathname = usePathname();
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     if (["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
 
@@ -92,7 +100,7 @@ export default function RedThread() {
                     strokeWidth="3"
                     strokeLinecap="round"
                     style={{ pathLength }}
-                    filter="url(#glow)"
+                    filter={isMobile ? undefined : "url(#glow)"}
                 />
             </svg>
         </motion.div>

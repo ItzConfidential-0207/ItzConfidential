@@ -131,7 +131,7 @@ export default function SuspectLineup() {
             <div className="w-full h-8 md:h-16" />
 
             {/* Tab Toggle */}
-            <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-4 bg-black/40 p-2 rounded-2xl md:rounded-3xl border border-gray-800 backdrop-blur-sm z-30 w-full md:w-auto mx-4">
+            <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-4 bg-black/40 p-2 rounded-2xl md:rounded-3xl border border-gray-800 md:backdrop-blur-sm z-30 w-full md:w-auto mx-4">
                 {(["cases", "bundles"] as const).map((tab) => (
                     <button
                         key={tab}
@@ -158,7 +158,7 @@ export default function SuspectLineup() {
                             onClick={() => setSelectedProduct(product)}
                             className={`
                                 relative px-4 py-4 md:px-8 md:py-6 font-mono text-left uppercase tracking-wider transition-all duration-300
-                                border backdrop-blur-sm group w-full flex items-center justify-between gap-2 overflow-visible
+                                border md:backdrop-blur-sm group w-full flex items-center justify-between gap-2 overflow-visible
                                 ${selectedProduct.id === product.id
                                     ? "border-red-600 bg-red-900/10 text-red-500 scale-105 z-10 shadow-lg"
                                     : "border-gray-800 bg-black/40 text-gray-500 hover:border-gray-600 hover:text-gray-300 hover:scale-[1.02]"}
