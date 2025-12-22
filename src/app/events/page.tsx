@@ -2,7 +2,43 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Phone, Mail, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, Mail, Instagram, ChevronLeft, ChevronRight, Play } from "lucide-react";
+
+const VideoCard = ({ url }: { url: string }) => {
+    const [isPlaying, setIsPlaying] = React.useState(false);
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+            } else {
+                videoRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
+        }
+    };
+
+    return (
+        <div className="w-full h-full relative group/card cursor-pointer" onClick={togglePlay}>
+            <video
+                ref={videoRef}
+                src={url}
+                className="w-full h-full object-cover"
+                loop
+                playsInline
+            />
+            {/* Play Button Overlay */}
+            {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover/card:bg-black/20 transition-colors">
+                    <div className="w-16 h-16 rounded-full bg-red-600/90 text-white flex items-center justify-center backdrop-blur-sm shadow-xl transition-transform transform group-hover/card:scale-110">
+                        <Play className="w-8 h-8 ml-1" />
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export default function EventsPage() {
     // Duplicate the reels array to create a seamless loop
@@ -199,17 +235,7 @@ export default function EventsPage() {
                                                         allow="encrypted-media"
                                                     ></iframe>
                                                 ) : item.type === 'video-local' ? (
-                                                    <div className="w-full h-full relative group/card cursor-pointer">
-                                                        <video
-                                                            src={item.url}
-                                                            className="w-full h-full object-cover"
-                                                            autoPlay
-                                                            muted
-                                                            loop
-                                                            playsInline
-                                                        />
-
-                                                    </div>
+                                                    <VideoCard url={item.url} />
                                                 ) : (
                                                     <div className="w-full h-full relative cursor-pointer group/card overflow-hidden">
                                                         {/* Image with slight zoom effect on hover */}
