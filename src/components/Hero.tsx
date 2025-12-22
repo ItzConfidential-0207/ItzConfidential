@@ -82,9 +82,9 @@ export default function Hero() {
                         <span className="text-[#D90429]">Itz</span> <span className="text-white">Confidential</span>
                     </motion.h1>
 
-                    {/* Glitch Overlay Text */}
+                    {/* Glitch Overlay Text - Desktop Only */}
                     <motion.h1
-                        className="absolute inset-0 font-header text-5xl sm:text-7xl md:text-[10rem] uppercase tracking-tighter z-20 opacity-50 pointer-events-none mix-blend-screen leading-none"
+                        className="hidden md:block absolute inset-0 font-header text-5xl sm:text-7xl md:text-[10rem] uppercase tracking-tighter z-20 opacity-50 pointer-events-none mix-blend-screen leading-none"
                         animate={{
                             x: [-2, 2, -1, 3, 0],
                             opacity: [0.5, 0.8, 0.4, 0.9, 0.5],
@@ -101,7 +101,7 @@ export default function Hero() {
                         <span className="text-[#D90429]">Itz</span> <span className="text-white">Confidential</span>
                     </motion.h1>
                     <motion.h1
-                        className="absolute inset-0 font-header text-5xl sm:text-7xl md:text-[10rem] text-cyan-500 uppercase tracking-tighter z-20 opacity-30 pointer-events-none mix-blend-color-dodge leading-none"
+                        className="hidden md:block absolute inset-0 font-header text-5xl sm:text-7xl md:text-[10rem] text-cyan-500 uppercase tracking-tighter z-20 opacity-30 pointer-events-none mix-blend-color-dodge leading-none"
                         animate={{
                             x: [2, -2, 1, -3, 0],
                             y: [1, -1, 0],

@@ -52,6 +52,8 @@ export default function IntroAnimation() {
                         {[...Array(8)].map((_, i) => (
                             <motion.div
                                 key={i}
+                                // Hide even-indexed beams on mobile to halve the load
+                                className={`absolute bg-red-600/40 blur-sm ${i % 2 === 0 ? 'hidden md:block' : ''}`}
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "200vh", opacity: [0, 0.6, 0] }}
                                 transition={{
@@ -60,7 +62,7 @@ export default function IntroAnimation() {
                                     ease: "circOut",
                                     times: [0, 0.1, 1]
                                 }}
-                                className="absolute bg-red-600/40 blur-sm"
+
                                 style={{
                                     width: Math.random() > 0.5 ? "2px" : "6px",
                                     left: `${(i * 100 / 8) + (Math.random() * 5)}%`, // Distribute across width
