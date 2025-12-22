@@ -62,6 +62,28 @@ export default function EventsPage() {
 
     return (
         <main className="min-h-screen bg-[#050505] text-gray-300 font-mono relative overflow-hidden flex flex-col items-center" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Service",
+                        "name": "Corporate Murder Mystery Events",
+                        "provider": {
+                            "@type": "Organization",
+                            "name": "Itz Confidential"
+                        },
+                        "serviceType": "Event Planning",
+                        "areaServed": "Delhi NCR",
+                        "description": "Immersive murder mystery experiences for corporate team building, college fests, and private parties.",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "INR",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    })
+                }}
+            />
             {/* Background Texture */}
             <div
                 className="absolute inset-0 opacity-20 pointer-events-none"

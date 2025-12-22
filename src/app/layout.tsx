@@ -72,6 +72,39 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${blackOpsOne.variable} ${stardosStencil.variable} ${courierPrime.variable} ${spaceMono.variable}`} suppressHydrationWarning>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@graph": [
+                                {
+                                    "@type": "Organization",
+                                    "name": "Itz Confidential",
+                                    "url": "https://itzconfidential.com",
+                                    "logo": "https://itzconfidential.com/itz-logo-v2.png",
+                                    "founder": {
+                                        "@type": "Person",
+                                        "name": "Muskan Khanna"
+                                    },
+                                    "sameAs": [
+                                        "https://instagram.com/itzconfidential"
+                                    ]
+                                },
+                                {
+                                    "@type": "WebSite",
+                                    "name": "Itz Confidential",
+                                    "url": "https://itzconfidential.com",
+                                    "potentialAction": {
+                                        "@type": "SearchAction",
+                                        "target": "https://itzconfidential.com/?s={search_term_string}",
+                                        "query-input": "required name=search_term_string"
+                                    }
+                                }
+                            ]
+                        })
+                    }}
+                />
                 <RedThreadProvider>
                     <Navbar />
                     <RedThread />

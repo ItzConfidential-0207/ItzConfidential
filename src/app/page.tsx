@@ -19,6 +19,36 @@ const SuspectLineup = dynamic(() => import('@/components/SuspectLineup'), {
 export default function Home() {
   return (
     <main className="flex flex-col items-center pb-0 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": CASES.map((c, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Product",
+                "name": c.title,
+                "description": c.summary,
+                "image": `https://itzconfidential.com${c.image}`,
+                "sku": c.id,
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Itz Confidential"
+                },
+                "offers": {
+                  "@type": "Offer",
+                  "price": c.id === "001" ? "599" : c.id === "002" ? "699" : c.id === "003" ? "720" : "999",
+                  "priceCurrency": "INR",
+                  "availability": "https://schema.org/InStock"
+                }
+              }
+            }))
+          })
+        }}
+      />
       <IntroAnimation />
       <Hero />
 
