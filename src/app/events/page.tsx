@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Phone, Mail, Instagram } from "lucide-react";
+import { Phone, Mail, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function EventsPage() {
     // Duplicate the reels array to create a seamless loop
@@ -10,26 +10,19 @@ export default function EventsPage() {
         { id: 1, type: 'reel', url: "https://www.instagram.com/reel/DQjdtfAE-Ow/?igsh=bWFqY2xidGZjbWts" },
         { id: 2, type: 'reel', url: "https://www.instagram.com/reel/DQUO4UPgTc3/?igsh=MW82dXJwNWJqbThtZg==" },
         { id: 3, type: 'reel', url: "https://www.instagram.com/reel/DRPcp5sgQVQ/?igsh=MWE1dm5ra2w1M3NxbA==" },
-        // Local placeholders
-        { id: 4, type: 'image-local', url: "/events/placeholder1.png", label: "Mystery Dinner" },
-        { id: 5, type: 'image-local', url: "/events/placeholder2.png", label: "Evidence Board" },
+
         // Imported Media - Horror Con
         { id: 6, type: 'video-local', url: "/events/horrorcon/1.MOV", label: "Horror Con Highlights" },
         { id: 7, type: 'video-local', url: "/events/horrorcon/2.MOV", label: "Suspect Interrogation" },
-        { id: 8, type: 'image-local', url: "/events/horrorcon/3.JPG", label: "Crime Scene Evidence" },
-        { id: 9, type: 'video-local', url: "/events/horrorcon/4.MOV", label: "Forensic Analysis" },
+
+
         { id: 10, type: 'video-local', url: "/events/horrorcon/5.MOV", label: "The Reveal" },
         { id: 11, type: 'video-local', url: "/events/horrorcon/storytelling%20on%20event%202.MOV", label: "Storytelling Session" },
         { id: 12, type: 'video-local', url: "/events/horrorcon/storytelling%20on%20event.MOV", label: "The Setup" },
-        // Imported Media - MyBar
-        { id: 13, type: 'image-local', url: "/events/myBar/IMG_5158.JPG", label: "MyBar Event 1" },
-        { id: 14, type: 'image-local', url: "/events/myBar/IMG_5159.JPG", label: "MyBar Event 2" },
-        { id: 15, type: 'image-local', url: "/events/myBar/IMG_5161.JPG", label: "MyBar Event 3" },
-        { id: 16, type: 'image-local', url: "/events/myBar/IMG_5170.JPG", label: "MyBar Event 4" },
-        { id: 17, type: 'image-local', url: "/events/myBar/IMG_5171.JPG", label: "MyBar Event 5" },
+
     ];
 
-    const marqueeContent = [...reels, ...reels, ...reels]; // Triple for safety
+    const marqueeContent = reels; // No loop needed for manual scroll
 
     return (
         <main className="min-h-screen bg-[#050505] text-gray-300 font-mono relative overflow-hidden flex flex-col items-center" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
@@ -63,44 +56,44 @@ export default function EventsPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h1 className="text-3xl md:text-5xl text-white font-header tracking-widest mb-8 uppercase">
-                                Corporate<br />Get-togethers<br />& Events
+                            <h1 className="text-3xl md:text-5xl text-white font-header tracking-widest uppercase text-center" style={{ marginBottom: '40px' }}>
+                                Corporate Get-togethers<br />&<br />Events
                             </h1>
-                            <div className="h-[1px] w-32 bg-red-600 mb-8"></div>
+                            <div className="h-[1px] w-32 bg-red-600 mx-auto" style={{ marginBottom: '40px' }}></div>
 
-                            <p className="text-xl md:text-2xl text-red-500 font-bold uppercase tracking-widest">
+                            <p className="text-xl md:text-2xl text-red-500 font-bold uppercase tracking-widest leading-relaxed">
                                 Turn Your Next Event into a Crime Scene <span className="text-white">(The Good Kind!)</span>
                             </p>
                         </motion.div>
                     </section>
 
                     {/* 2. Value Proposition */}
-                    <section className="space-y-8" style={{ marginTop: '0px' }}>
+                    <section className="space-y-16" style={{ marginTop: '50px' }}>
                         <p className="text-lg md:text-xl leading-relaxed text-gray-400 max-w-4xl">
-                            Traditional corporate parties are often just small talk and canapes. We change that.
+                            Traditional corporate parties are often just small talk. We change that.
                         </p>
                         <p className="text-2xl md:text-3xl font-bold text-white">
                             We bring the mystery to you.
                         </p>
-                        <div className="w-24 h-1 bg-red-600 mt-8"></div>
+                        <div className="w-24 h-1 bg-red-600 mt-16"></div>
                     </section>
 
                     {/* 3. The Founder Section */}
-                    <section className="relative" style={{ marginTop: '80px' }}>
+                    <section className="relative" style={{ marginTop: '150px' }}>
                         {/* Section Label */}
                         <div className="absolute -top-10 left-0 text-6xl text-gray-800/20 font-black uppercase pointer-events-none select-none">
                             Founder
                         </div>
 
                         <div className="bg-[#111] border border-gray-800 p-8 md:p-16 rounded-lg relative overflow-hidden">
-                            <div className="grid md:grid-cols-2 gap-16 items-center">
+                            <div className="grid md:grid-cols-2 gap-20 items-center">
                                 {/* Text Content */}
-                                <div className="space-y-8 order-2 md:order-1">
-                                    <h2 className="text-3xl md:text-5xl text-white font-bold uppercase leading-none">
+                                <div className="order-2 md:order-1" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+                                    <h2 className="text-3xl md:text-5xl text-white font-bold uppercase leading-tight">
                                         Host Your Event with Our Founder,<br />
                                         <span className="text-red-500">Muskan Khanna</span>
                                     </h2>
-                                    <ul className="space-y-6 text-lg text-gray-400">
+                                    <ul className="text-lg text-gray-400" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
                                         <li className="flex items-start gap-4">
                                             <span className="text-red-500 text-xl">01</span>
                                             <div>
@@ -151,118 +144,126 @@ export default function EventsPage() {
                                 Evidence Tape // Do Not Cross
                             </div>
 
-                            <div className="flex overflow-hidden">
-                                <motion.div
-                                    className="flex gap-8 px-8"
-                                    animate={{ x: ["0%", "-50%"] }} // Scroll half way since we doubled/tripled content
-                                    transition={{
-                                        x: {
-                                            repeat: Infinity,
-                                            repeatType: "loop",
-                                            duration: 60,
-                                            ease: "linear",
-                                        },
-                                    }}
-                                    style={{ width: "max-content" }}
-                                >
-                                    {marqueeContent.map((item, index) => {
-                                        // Helper to get embed URL
-                                        const getEmbedUrl = (url: string) => {
-                                            try {
-                                                const urlObj = new URL(url);
-                                                // Ensure it has a trailing slash before appending 'embed'
-                                                const pathname = urlObj.pathname.endsWith('/') ? urlObj.pathname : `${urlObj.pathname}/`;
-                                                return `${urlObj.origin}${pathname}embed`;
-                                            } catch (e) {
-                                                return url;
-                                            }
-                                        };
+                            {/* Navigation Buttons */}
+                            <button
+                                onClick={() => {
+                                    const container = document.getElementById('tape-container');
+                                    if (container) container.scrollBy({ left: -320, behavior: 'smooth' });
+                                }}
+                                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/80 p-3 rounded-full border border-gray-700 hover:bg-red-600 transition-colors"
+                            >
+                                <ChevronLeft className="w-8 h-8 text-white" />
+                            </button>
+                            <button
+                                onClick={() => {
+                                    const container = document.getElementById('tape-container');
+                                    if (container) container.scrollBy({ left: 320, behavior: 'smooth' });
+                                }}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/80 p-3 rounded-full border border-gray-700 hover:bg-red-600 transition-colors"
+                            >
+                                <ChevronRight className="w-8 h-8 text-white" />
+                            </button>
 
-                                        return (
-                                            <div
-                                                key={`${item.id}-${index}`}
-                                                className="w-[300px] h-[530px] flex-shrink-0 bg-black border-4 border-white p-2 shadow-2xl relative group"
-                                            >
-                                                <div className="w-full h-full bg-gray-900 flex items-center justify-center overflow-hidden relative">
-                                                    {item.type === 'reel' && item.url ? (
-                                                        <iframe
-                                                            src={getEmbedUrl(item.url)}
+                            <div
+                                id="tape-container"
+                                className="flex overflow-x-auto gap-8 px-16 pb-8 snap-x snap-mandatory scrollbar-hide"
+                                style={{ scrollBehavior: 'smooth' }}
+                            >
+                                {marqueeContent.map((item, index) => {
+                                    // Helper to get embed URL
+                                    const getEmbedUrl = (url: string) => {
+                                        try {
+                                            const urlObj = new URL(url);
+                                            // Ensure it has a trailing slash before appending 'embed'
+                                            const pathname = urlObj.pathname.endsWith('/') ? urlObj.pathname : `${urlObj.pathname}/`;
+                                            return `${urlObj.origin}${pathname}embed`;
+                                        } catch (e) {
+                                            return url;
+                                        }
+                                    };
+
+                                    return (
+                                        <div
+                                            key={`${item.id}-${index}`}
+                                            className="w-[300px] h-[530px] flex-shrink-0 bg-black border-4 border-white p-2 shadow-2xl relative group snap-center"
+                                        >
+                                            <div className="w-full h-full bg-gray-900 flex items-center justify-center overflow-hidden relative">
+                                                {item.type === 'reel' && item.url ? (
+                                                    <iframe
+                                                        src={getEmbedUrl(item.url)}
+                                                        className="w-full h-full object-cover"
+                                                        frameBorder="0"
+                                                        scrolling="no"
+                                                        // @ts-expect-error: React warning requires lowercase, TS expects CamelCase
+                                                        allowtransparency="true"
+                                                        allow="encrypted-media"
+                                                    ></iframe>
+                                                ) : item.type === 'video-local' ? (
+                                                    <div className="w-full h-full relative group/card cursor-pointer">
+                                                        <video
+                                                            src={item.url}
                                                             className="w-full h-full object-cover"
-                                                            frameBorder="0"
-                                                            scrolling="no"
-                                                            // @ts-expect-error: React warning requires lowercase, TS expects CamelCase
-                                                            allowtransparency="true"
-                                                            allow="encrypted-media"
-                                                        ></iframe>
-                                                    ) : item.type === 'video-local' ? (
-                                                        <div className="w-full h-full relative group/card cursor-pointer">
-                                                            <video
-                                                                src={item.url}
-                                                                className="w-full h-full object-cover"
-                                                                autoPlay
-                                                                muted
-                                                                loop
-                                                                playsInline
-                                                            />
-                                                            {/* Label Overlay */}
-                                                            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/60 to-transparent">
-                                                                <p className="text-white font-bold uppercase tracking-widest text-sm translate-y-2 group-hover/card:translate-y-0 transition-transform">{item.label}</p>
-                                                            </div>
-                                                        </div>
-                                                    ) : (
-                                                        <div className="w-full h-full relative cursor-pointer group/card overflow-hidden">
-                                                            {/* Image with slight zoom effect on hover */}
-                                                            <img
-                                                                src={item.url}
-                                                                alt={item.label}
-                                                                className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
-                                                                style={{ filter: "sepia(0.2) contrast(1.2)" }}
-                                                            />
+                                                            autoPlay
+                                                            muted
+                                                            loop
+                                                            playsInline
+                                                        />
+
+                                                    </div>
+                                                ) : (
+                                                    <div className="w-full h-full relative cursor-pointer group/card overflow-hidden">
+                                                        {/* Image with slight zoom effect on hover */}
+                                                        <img
+                                                            src={item.url}
+                                                            alt={item.label}
+                                                            className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
+                                                            style={{ filter: "sepia(0.2) contrast(1.2)" }}
+                                                        />
 
 
 
-                                                            {/* Label Overlay */}
-                                                            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/60 to-transparent">
-                                                                <p className="text-white font-bold uppercase tracking-widest text-sm translate-y-2 group-hover/card:translate-y-0 transition-transform">{item.label}</p>
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                {/* Tape Effect */}
-                                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-white/20 rotate-[-2deg] pointer-events-none"></div>
+
+                                                    </div>
+                                                )}
                                             </div>
-                                        );
-                                    })}
-                                </motion.div>
+                                            {/* Tape Effect */}
+                                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-white/20 rotate-[-2deg] pointer-events-none"></div>
+                                        </div>
+                                    );
+                                })}
                             </div>
+
                         </div>
                     </section>
 
                     {/* 5. Success Story */}
-                    <section className="grid md:grid-cols-2 gap-12 items-center" style={{ marginTop: '80px' }}>
+                    {/* 5. Success Story */}
+                    <section className="relative max-w-4xl mx-auto px-4 md:px-0" style={{ marginTop: '80px' }}>
                         <div className="relative">
-                            <div className="absolute -inset-4 bg-red-900/20 rotate-3 rounded-lg"></div>
+                            <div className="absolute -inset-4 bg-red-900/20 rotate-1 rounded-lg"></div>
                             <div className="relative bg-[#1a1a1a] p-8 md:p-12 border-l-4 border-red-500 shadow-2xl">
-                                <h3 className="text-2xl text-gray-400 font-bold uppercase mb-2">Success Story</h3>
-                                <h2 className="text-4xl md:text-5xl text-white font-black uppercase mb-6">Horror Con</h2>
-                                <p className="text-xl text-gray-300 leading-relaxed">
-                                    "From the Stage to the Stall." We brought our A-game to the convention.
-                                </p>
-                                <p className="mt-6 text-lg">
-                                    Resulted in the <span className="text-red-500 font-bold bg-red-500/10 px-2 py-1">highest sales of the entire event</span>, proving that people are hungry for mystery.
-                                </p>
+                                <h2 className="text-3xl md:text-4xl text-white font-black uppercase mb-8 text-center md:text-left">Successfully Hosted At:</h2>
+
+                                <ul className="space-y-6 text-lg text-gray-300 leading-relaxed list-none">
+                                    <li>
+                                        <span className="text-red-500 font-bold text-xl">• Horror Con:</span> India’s biggest Halloween party, where we were the #1 top-selling stall.
+                                    </li>
+                                    <li>
+                                        <span className="text-red-500 font-bold text-xl">• College Fests:</span> Bringing a modern, intellectual thrill to campus crowds.
+                                    </li>
+                                    <li>
+                                        <span className="text-red-500 font-bold text-xl">• Bar & Social Events:</span> The ultimate mystery ice-breaker for a night out.
+                                    </li>
+                                    <li>
+                                        <span className="text-red-500 font-bold text-xl">• Book Launches:</span> Adding immersive suspense to the literary world.
+                                    </li>
+                                </ul>
+
+                                <div className="mt-10 pt-8 border-t border-gray-800/50">
+                                    <p className="text-xl text-white font-bold mb-2">Book Us Today - <a href="tel:9289345359" className="text-red-500 hover:text-red-400 transition-colors">9289345359</a></p>
+                                    <p className="text-xl text-white font-bold">Email - <a href="mailto:Muskankhanna2023@gmail.com" className="text-red-500 hover:text-red-400 transition-colors">Muskankhanna2023@gmail.com</a></p>
+                                </div>
                             </div>
-                        </div>
-                        {/* Placeholder for event photo */}
-                        <div className="relative aspect-video bg-gray-900 rounded-lg border border-gray-800 overflow-hidden group">
-                            <Image
-                                src="/events/horrorcon/3.JPG"
-                                alt="Horror Con Event"
-                                fill
-                                className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                            />
-                            {/* Overlay for mood */}
-                            <div className="absolute inset-0 bg-red-900/10 pointer-events-none mix-blend-overlay"></div>
                         </div>
                     </section>
 
@@ -301,7 +302,7 @@ export default function EventsPage() {
                 <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-gray-600 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-gray-600 pointer-events-none"></div>
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-gray-600 pointer-events-none"></div>
-            </div>
-        </main>
+            </div >
+        </main >
     );
 }
