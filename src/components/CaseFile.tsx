@@ -8,13 +8,12 @@ interface CaseFileProps {
     id: string;
     title: string;
     difficulty: number;
-    time: string;
     players: string;
     summary: string;
     image?: string;
 }
 
-export default function CaseFile({ id, title, difficulty, time, players, summary, image }: CaseFileProps) {
+export default function CaseFile({ id, title, difficulty, players, summary, image }: CaseFileProps) {
     const containerRef = useRef<HTMLElement>(null);
     const pinRef = useRef<HTMLDivElement>(null);
     const { register, unregister } = useRedThread();
@@ -29,7 +28,7 @@ export default function CaseFile({ id, title, difficulty, time, players, summary
     return (
         <motion.article
             ref={containerRef}
-            className="relative w-full max-w-sm bg-white p-4 pb-8 shadow-[0_10px_30px_rgba(0,0,0,0.3)] transform rotate-1 hover:rotate-0 transition-all duration-300 ease-out flex flex-col gap-4 text-black border-[1px] border-gray-200 group"
+            className="relative w-full max-w-sm bg-white p-3 pb-6 md:p-4 md:pb-8 shadow-[0_10px_30px_rgba(0,0,0,0.3)] transform rotate-1 hover:rotate-0 transition-all duration-300 ease-out flex flex-col gap-4 text-black border-[1px] border-gray-200 group"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}

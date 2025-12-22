@@ -44,7 +44,7 @@ const BUNDLE_OFFERS: Product[] = [
     {
         id: "trilogy-pack",
         label: "The Trilogy",
-        price: "₹1500",
+        price: "₹1499",
         count: 3,
         description: "Get all 3: Serial Killer, Dead Girl, Cursed Book",
         discountLabel: "BEST SELLER"
@@ -52,10 +52,10 @@ const BUNDLE_OFFERS: Product[] = [
     {
         id: "heavy-hitters",
         label: "Heavy Hitters",
-        price: "₹1750",
+        price: "₹1499",
         originalPrice: "₹2000",
         count: 2,
-        description: "The Lost Teacher + The Seventh Day",
+        description: "Any 2 from the lost teacher, the seventh day, the haunted school",
         discountLabel: "COMBO DEAL"
     },
     {
@@ -112,14 +112,19 @@ export default function SuspectLineup() {
 
     const currentList = activeTab === "cases" ? INDIVIDUAL_CASES : BUNDLE_OFFERS;
 
+    // Calculate totals for Custom Bundle
+    const customBundleSubtotal = selectedCustomCases.reduce((sum, id) => sum + parsePrice(INDIVIDUAL_CASES.find(c => c.id === id)?.price || "0"), 0);
+    const customBundleDiscount = selectedCustomCases.length >= 2 ? Math.round(customBundleSubtotal * 0.25) : 0;
+    const customBundleFinal = customBundleSubtotal - customBundleDiscount;
+
     return (
         <section id="suspect-lineup" className="py-32 px-4 flex flex-col items-center relative z-20 overflow-visible">
             {/* Top Spacer */}
             <div className="w-full h-16 md:h-32" />
 
-            <h2 className="font-header text-5xl md:text-7xl text-[var(--color-evidence-red)] uppercase tracking-widest relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-center">
+            <h2 className="font-header text-3xl md:text-7xl text-[var(--color-evidence-red)] uppercase tracking-widest relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] text-center">
                 The Suspect Lineup
-                <div ref={pinRef} className="absolute -left-16 top-1/2 -translate-y-1/2 w-4 h-4 bg-red-900/50 rounded-full border border-red-500/30"></div>
+                <div ref={pinRef} className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-red-900/50 rounded-full border border-red-500/30"></div>
             </h2>
 
             {/* Middle Spacer */}
@@ -152,17 +157,17 @@ export default function SuspectLineup() {
                             key={product.id}
                             onClick={() => setSelectedProduct(product)}
                             className={`
-                                relative px-8 py-6 font-mono text-left uppercase tracking-wider transition-all duration-300
-                                border backdrop-blur-sm group w-full flex items-center justify-between
+                                relative px-4 py-4 md:px-8 md:py-6 font-mono text-left uppercase tracking-wider transition-all duration-300
+                                border backdrop-blur-sm group w-full flex items-center justify-between gap-2 overflow-visible
                                 ${selectedProduct.id === product.id
                                     ? "border-red-600 bg-red-900/10 text-red-500 scale-105 z-10 shadow-lg"
                                     : "border-gray-800 bg-black/40 text-gray-500 hover:border-gray-600 hover:text-gray-300 hover:scale-[1.02]"}
                             `}
                         >
-                            <span className="text-sm md:text-lg truncate mr-4">{product.label}</span>
+                            <span className="text-sm md:text-lg mr-2 flex-1 min-w-0 break-words leading-tight">{product.label}</span>
 
                             {/* Price Tag in List */}
-                            <div className="flex flex-col items-end leading-none">
+                            <div className="flex flex-col items-end leading-none shrink-0">
                                 <span className={`text-lg ${selectedProduct.id === product.id ? "text-white" : "text-gray-400"}`}>
                                     {product.price}
                                 </span>
@@ -183,7 +188,7 @@ export default function SuspectLineup() {
 
                             {/* Discount Badge on Button */}
                             {product.discountLabel && (
-                                <div className="absolute -top-3 -right-2 bg-yellow-500 text-black text-[10px] font-black px-2 py-1 shadow-md rotate-3 z-20">
+                                <div className="absolute -top-3 right-2 bg-yellow-500 text-black text-[9px] md:text-[10px] font-black px-1.5 py-0.5 md:px-2 md:py-1 shadow-md rotate-3 z-20 whitespace-nowrap">
                                     {product.discountLabel}
                                 </div>
                             )}
@@ -195,7 +200,7 @@ export default function SuspectLineup() {
                 <div className="flex flex-col items-center w-full max-w-lg">
                     {selectedProduct.id === "custom-bundle" ? (
                         // CUSTOM BUNDLE BUILDER UI
-                        <div className="w-full bg-[#d2b48c] p-6 md:p-8 border border-[#a0744b] shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative rotate-1"
+                        <div className="w-full bg-[#d2b48c] p-4 md:p-8 border border-[#a0744b] shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative rotate-1"
                             style={{
                                 backgroundImage: `url("https://www.transparenttextures.com/patterns/paper-fibers.png")`,
                             }}
@@ -203,14 +208,14 @@ export default function SuspectLineup() {
                             {/* Tape */}
                             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/40 rotate-1"></div>
 
-                            <h3 className="font-header text-3xl text-red-900 border-b-2 border-red-900/20 pb-4 mb-6 text-center">
+                            <h3 className="font-header text-xl md:text-3xl text-red-900 border-b-2 border-red-900/20 pb-4 mb-6 text-center">
                                 CONFIDENTIAL CHECKLIST
                             </h3>
 
                             <div className="space-y-3 mb-8">
                                 {INDIVIDUAL_CASES.map(c => (
-                                    <label key={c.id} className="flex items-center gap-3 cursor-pointer group">
-                                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-colors ${selectedCustomCases.includes(c.id) ? 'bg-red-900 border-red-900' : 'border-gray-600'}`}>
+                                    <label key={c.id} className="flex items-center gap-2 md:gap-3 cursor-pointer group">
+                                        <div className={`w-5 h-5 border-2 flex items-center justify-center transition-colors shrink-0 ${selectedCustomCases.includes(c.id) ? 'bg-red-900 border-red-900' : 'border-gray-600'}`}>
                                             {selectedCustomCases.includes(c.id) && <span className="text-white text-xs">✓</span>}
                                         </div>
                                         <input
@@ -225,7 +230,7 @@ export default function SuspectLineup() {
                                                 }
                                             }}
                                         />
-                                        <span className={`font-mono text-sm ${selectedCustomCases.includes(c.id) ? 'text-gray-900 font-bold decoration-red-500/50' : 'text-gray-700'}`}>
+                                        <span className={`font-mono text-xs md:text-sm ${selectedCustomCases.includes(c.id) ? 'text-gray-900 font-bold decoration-red-500/50' : 'text-gray-700'}`}>
                                             {c.label.split(":")[1] || c.label}
                                         </span>
                                         <span className="ml-auto font-mono text-xs text-gray-500">{c.price}</span>
@@ -234,18 +239,18 @@ export default function SuspectLineup() {
                             </div>
 
                             {/* Calculation Area */}
-                            <div className="bg-white/30 p-4 border border-dashed border-gray-500 space-y-1 font-mono text-sm">
+                            <div className="bg-white/30 p-4 border border-dashed border-gray-500 space-y-1 font-mono text-xs md:text-sm">
                                 <div className="flex justify-between text-gray-600">
                                     <span>Subtotal:</span>
-                                    <span>₹{selectedCustomCases.reduce((sum, id) => sum + parsePrice(INDIVIDUAL_CASES.find(c => c.id === id)?.price || "0"), 0)}</span>
+                                    <span>₹{customBundleSubtotal}</span>
                                 </div>
                                 <div className="flex justify-between text-red-700">
                                     <span>Discount (25%):</span>
-                                    <span>- ₹{Math.round(selectedCustomCases.reduce((sum, id) => sum + parsePrice(INDIVIDUAL_CASES.find(c => c.id === id)?.price || "0"), 0) * 0.25)}</span>
+                                    <span>- ₹{customBundleDiscount}</span>
                                 </div>
-                                <div className="border-t border-gray-500 mt-2 pt-2 flex justify-between text-xl font-bold text-gray-900">
+                                <div className="border-t border-gray-500 mt-2 pt-2 flex justify-between text-lg md:text-xl font-bold text-gray-900">
                                     <span>FINAL:</span>
-                                    <span>₹{Math.round(selectedCustomCases.reduce((sum, id) => sum + parsePrice(INDIVIDUAL_CASES.find(c => c.id === id)?.price || "0"), 0) * 0.75)}</span>
+                                    <span>₹{customBundleFinal}</span>
                                 </div>
                             </div>
 
@@ -253,7 +258,7 @@ export default function SuspectLineup() {
                                 href="https://forms.gle/iGzo3JQDgiZPYuAb8"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="mt-8 block w-full bg-red-900 text-white text-center py-4 font-header text-xl uppercase tracking-widest hover:bg-black transition-colors"
+                                className="mt-6 md:mt-8 block w-full bg-red-900 text-white text-center py-3 md:py-4 font-header text-lg md:text-xl uppercase tracking-widest hover:bg-black transition-colors"
                             >
                                 Order Bundle
                             </a>

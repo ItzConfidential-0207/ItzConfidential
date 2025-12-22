@@ -12,20 +12,21 @@ export default function Navbar() {
     const navLinks = [
         { href: "/", label: "Home" },
         { href: "/detectives", label: "For The Detectives" },
+        { href: "/events", label: "Events" },
         { href: "/about", label: "About Us" },
     ];
 
     return (
         <nav className="fixed top-0 left-0 w-full z-[100] transition-all duration-300 bg-[var(--color-void-black)]/90 backdrop-blur-md border-b border-white/10">
-            <div className="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex items-center justify-between">
                 {/* Logo Area (Left) */}
-                <Link href="/" className="group flex items-center gap-2 focus-ring rounded-sm">
+                <Link href="/" className="group flex items-center gap-2 focus-ring rounded-sm relative z-50 pl-1 py-1">
                     <Image
                         src="/itz-logo-v2.png"
                         alt="ITZ Confidential"
-                        width={90}
-                        height={30}
-                        className="w-20 md:w-24 object-contain drop-shadow-[0_0_5px_rgba(255,0,0,0.3)] group-hover:drop-shadow-[0_0_10px_rgba(220,38,38,0.5)] transition-all duration-300"
+                        width={100}
+                        height={100}
+                        className="w-14 md:w-20 h-auto object-contain drop-shadow-[0_0_5px_rgba(255,0,0,0.3)] group-hover:drop-shadow-[0_0_10px_rgba(220,38,38,0.5)] transition-all duration-300"
                     />
                 </Link>
 

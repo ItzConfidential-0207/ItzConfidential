@@ -9,12 +9,22 @@ export default function IntroAnimation() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // Check if user has already seen the intro in this session
+        const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+
+        if (hasSeenIntro) {
+            setIsVisible(false);
+            setMounted(true);
+            return;
+        }
+
         setMounted(true);
         document.body.style.overflow = "hidden";
 
         const timer = setTimeout(() => {
             setIsVisible(false);
             document.body.style.overflow = "unset";
+            sessionStorage.setItem("hasSeenIntro", "true");
         }, 4000);
 
         return () => {
@@ -37,9 +47,9 @@ export default function IntroAnimation() {
                     {/* Background Ambience */}
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(50,0,0,0.2)_0%,_#000000_70%)]" />
 
-                    {/* Multiple "Netflix-style" Beams - Full Screen */}
+                    {/* Multiple "Netflix-style" Beams - Optimized for Mobile */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-                        {[...Array(15)].map((_, i) => (
+                        {[...Array(8)].map((_, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ height: 0, opacity: 0 }}
@@ -53,7 +63,7 @@ export default function IntroAnimation() {
                                 className="absolute bg-red-600/40 blur-sm"
                                 style={{
                                     width: Math.random() > 0.5 ? "2px" : "6px",
-                                    left: `${(i * 100 / 15) + (Math.random() * 5)}%`, // Distribute across width
+                                    left: `${(i * 100 / 8) + (Math.random() * 5)}%`, // Distribute across width
                                     top: "50%",
                                     transform: `translate(-50%, -50%) rotate(${15 + Math.random() * 20}deg)`,
                                     background: Math.random() > 0.5 ? "#DC2626" : "#991B1B",
@@ -79,7 +89,7 @@ export default function IntroAnimation() {
                                     ease: [0.16, 1, 0.3, 1], // Expo out
                                     delay: 0.2
                                 }}
-                                className="font-header text-7xl md:text-9xl text-red-600 font-bold tracking-widest drop-shadow-[0_0_25px_rgba(220,38,38,0.8)] z-20"
+                                className="font-header text-5xl md:text-9xl text-red-600 font-bold tracking-widest drop-shadow-[0_0_25px_rgba(220,38,38,0.8)] z-20"
                             >
                                 ITZ
                             </motion.h1>

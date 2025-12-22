@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useRedThread } from "@/hooks/useRedThread";
+import { Phone, Mail, Instagram } from "lucide-react";
 
 export default function Footer() {
     const pinRef = useRef<HTMLDivElement>(null);
@@ -12,7 +13,7 @@ export default function Footer() {
     }, [register, unregister]);
 
     return (
-        <footer className="w-full py-16 bg-[#050505] mt-32 flex flex-col items-center justify-center relative border-t border-red-900/30 overflow-hidden">
+        <footer className="w-full py-16 bg-[#050505] mt-20 md:mt-32 flex flex-col items-center justify-center relative border-t border-red-900/30 overflow-hidden">
             {/* Background Texture - Subtle */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/black-linen.png")` }}></div>
 
@@ -28,24 +29,25 @@ export default function Footer() {
             {/* Contact Icons - Clean & Wide */}
             <div className="flex flex-wrap justify-center gap-12 md:gap-20 mb-16 relative z-10 px-4">
                 <a href="https://wa.me/919289345359" target="_blank" rel="noopener noreferrer" className="nav-item group flex flex-col items-center gap-3">
-                    <div className="text-3xl grayscale group-hover:grayscale-0 transition-all duration-300 scale-100 group-hover:scale-110">📞</div>
+                    <div className="text-gray-400 group-hover:text-green-500 transition-colors duration-300 transform group-hover:scale-110">
+                        <Phone className="w-8 h-8" />
+                    </div>
                     <span className="text-[10px] font-mono text-gray-600 group-hover:text-green-500 uppercase tracking-widest transition-colors">WhatsApp</span>
                 </a>
 
                 <a href="mailto:itzconfidentialofficial@gmail.com" className="nav-item group flex flex-col items-center gap-3">
-                    <div className="text-3xl grayscale group-hover:grayscale-0 transition-all duration-300 scale-100 group-hover:scale-110">✉️</div>
+                    <div className="text-gray-400 group-hover:text-blue-500 transition-colors duration-300 transform group-hover:scale-110">
+                        <Mail className="w-8 h-8" />
+                    </div>
                     <span className="text-[10px] font-mono text-gray-600 group-hover:text-blue-500 uppercase tracking-widest transition-colors">Email</span>
                 </a>
 
-                <a href="https://instagram.com/itz.confidential" target="_blank" rel="noopener noreferrer" className="nav-item group flex flex-col items-center gap-3">
-                    <div className="text-3xl grayscale group-hover:grayscale-0 transition-all duration-300 scale-100 group-hover:scale-110">📸</div>
+                <a href="https://www.instagram.com/itzconfidentialofficial?igsh=bDN4YTFkYjQ1YjYx&utm_source=qr" target="_blank" rel="noopener noreferrer" className="nav-item group flex flex-col items-center gap-3">
+                    <div className="text-gray-400 group-hover:text-pink-500 transition-colors duration-300 transform group-hover:scale-110">
+                        <Instagram className="w-8 h-8" />
+                    </div>
                     <span className="text-[10px] font-mono text-gray-600 group-hover:text-pink-500 uppercase tracking-widest transition-colors">Instagram</span>
                 </a>
-
-                <div className="nav-item group flex flex-col items-center gap-3 opacity-40 cursor-not-allowed">
-                    <div className="text-3xl grayscale">👍</div>
-                    <span className="text-[10px] font-mono text-gray-700 uppercase tracking-widest">Facebook</span>
-                </div>
             </div>
 
             <div className="w-full max-w-xs h-[1px] bg-gradient-to-r from-transparent via-gray-800 to-transparent mb-8"></div>

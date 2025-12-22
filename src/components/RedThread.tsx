@@ -13,8 +13,6 @@ export default function RedThread() {
     const { scrollYProgress } = useScroll();
     const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
 
-    const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
-
     useEffect(() => {
         const calculatePath = () => {
             const sortedNodes = Array.from(nodes.values()).sort((a: HTMLElement, b: HTMLElement) => {
@@ -28,7 +26,6 @@ export default function RedThread() {
             setDocHeight(document.body.scrollHeight);
 
             let d = "";
-            const currentPoints: { x: number; y: number }[] = [];
 
             let prevX = 0;
             let prevY = 0;
@@ -37,8 +34,6 @@ export default function RedThread() {
                 const box = node.getBoundingClientRect();
                 const centerX = box.left + box.width / 2 + window.scrollX;
                 const centerY = box.top + window.scrollY + box.height / 2;
-
-                currentPoints.push({ x: centerX, y: centerY });
 
                 if (index === 0) {
                     d += `M ${centerX} ${centerY}`;
@@ -50,7 +45,6 @@ export default function RedThread() {
                 prevY = centerY;
             });
             setPathd(d);
-            setPoints(currentPoints);
         };
 
         // Use ResizeObserver for efficient updates
@@ -74,10 +68,16 @@ export default function RedThread() {
 
     const pathname = usePathname();
 
-    if (["/payment", "/detectives", "/about"].includes(pathname)) return null;
+    if (["/payment", "/detectives", "/about", "/events"].includes(pathname)) return null;
 
     return (
-        <div className="absolute top-0 left-0 w-full pointer-events-none" style={{ height: docHeight || '100%', zIndex: 'var(--z-index-thread)' }}>
+        <motion.div
+            className="absolute top-0 left-0 w-full pointer-events-none"
+            style={{ height: docHeight || '100%', zIndex: 'var(--z-index-thread)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+        >
             <svg className="w-full h-full overflow-visible">
                 <defs>
                     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -95,17 +95,6 @@ export default function RedThread() {
                     filter="url(#glow)"
                 />
             </svg>
-
-            {/* Render Pin Heads on top of the thread */}
-            {points.map((p, i) => (
-                <div
-                    key={i}
-                    className="absolute w-4 h-4 rounded-full bg-red-900 border border-white/30 shadow-md z-50 transform -translate-x-1/2 -translate-y-1/2"
-                    style={{ left: p.x, top: p.y }}
-                >
-                    <div className="absolute top-1 left-1 w-1 h-1 bg-white/40 rounded-full"></div>
-                </div>
-            ))}
-        </div>
+        </motion.div>
     );
 }

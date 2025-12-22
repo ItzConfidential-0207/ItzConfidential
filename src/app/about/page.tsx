@@ -3,14 +3,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { Phone, Mail, Instagram, Youtube } from "lucide-react";
+
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-black text-gray-300 font-mono relative overflow-hidden flex flex-col items-center p-4 pt-32 pb-20">
+        <main
+            className="min-h-screen w-full bg-[#050505] text-gray-300 font-mono relative overflow-hidden flex flex-col items-center p-4 pb-20"
+            style={{ paddingTop: '100px' }}
+        >
             {/* Background Texture */}
             <div
                 className="absolute inset-0 opacity-20 pointer-events-none"
                 style={{
-                    backgroundImage: `url("https://www.transparenttextures.com/patterns/black-linen.png")`,
+                    backgroundImage: `radial-gradient(#222 1px, transparent 1px)`,
+                    backgroundSize: '20px 20px'
                 }}
             ></div>
 
@@ -21,7 +27,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-6xl w-full bg-[#111] border border-gray-800 p-8 md:p-16 relative shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+                className="max-w-6xl w-full bg-[#111] border border-gray-800 relative shadow-[0_0_50px_rgba(0,0,0,0.8)] mt-5 p-5 md:p-14 lg:p-16"
             >
                 {/* Header Stamp */}
                 <div className="absolute top-8 right-8 border-4 border-gray-700/50 rounded-sm p-2 rotate-[10deg] opacity-50 pointer-events-none hidden md:block">
@@ -30,17 +36,17 @@ export default function AboutPage() {
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-16 relative z-10">
+                <div className="relative z-10" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
 
                     {/* Section 1: Contact Us / Mission */}
-                    <section className="space-y-6">
-                        <h1 className="text-4xl md:text-5xl text-white font-header tracking-widest mb-4">
+                    <section className="space-y-8">
+                        <h1 className="text-3xl md:text-5xl text-white font-header tracking-widest mb-8">
                             CONTACT US
                         </h1>
-                        <div className="h-[1px] w-32 bg-red-600 mb-8"></div>
+                        <div className="h-[1px] w-32 bg-red-600 mb-12"></div>
 
-                        <div className="grid md:grid-cols-2 gap-12">
-                            <div className="space-y-6 text-lg leading-relaxed text-gray-400">
+                        <div className="grid md:grid-cols-2 gap-16">
+                            <div className="space-y-8 text-lg leading-relaxed text-gray-400">
                                 <p>
                                     <span className="text-white font-bold">Hello Detective,</span>
                                 </p>
@@ -49,7 +55,7 @@ export default function AboutPage() {
                                 </p>
                             </div>
 
-                            <div className="bg-black/40 border border-gray-800 p-8 rounded-lg">
+                            <div className="bg-black/40 border border-gray-800 p-10 rounded-lg">
                                 <h3 className="text-xl text-white font-bold uppercase tracking-wider mb-6 border-b border-gray-800 pb-2">
                                     Get In Touch
                                 </h3>
@@ -58,20 +64,16 @@ export default function AboutPage() {
                                 </p>
                                 <ul className="space-y-4 text-base">
                                     <li className="flex items-center gap-3">
-                                        <span className="text-green-500 font-bold w-24">WhatsApp:</span>
+                                        <Phone className="w-5 h-5 text-white" />
                                         <a href="https://wa.me/919289345359" className="text-gray-300 hover:text-white transition-colors">9289345359</a>
                                     </li>
                                     <li className="flex items-center gap-3">
-                                        <span className="text-blue-500 font-bold w-24">Email:</span>
+                                        <Mail className="w-5 h-5 text-white" />
                                         <a href="mailto:itzconfidentialofficial@gmail.com" className="text-gray-300 hover:text-white transition-colors truncate">itzconfidentialofficial@gmail.com</a>
                                     </li>
                                     <li className="flex items-center gap-3">
-                                        <span className="text-pink-500 font-bold w-24">Instagram:</span>
-                                        <a href="https://instagram.com/itz.confidential" target="_blank" className="text-gray-300 hover:text-white transition-colors">@itz.confidential</a>
-                                    </li>
-                                    <li className="flex items-center gap-3">
-                                        <span className="text-blue-400 font-bold w-24">Facebook:</span>
-                                        <span className="text-gray-300">ITZ Confidential</span>
+                                        <Instagram className="w-5 h-5 text-white" />
+                                        <a href="https://www.instagram.com/itzconfidentialofficial?igsh=bDN4YTFkYjQ1YjYx&utm_source=qr" target="_blank" className="text-gray-300 hover:text-white transition-colors">@itz.confidential</a>
                                     </li>
                                 </ul>
                             </div>
@@ -79,12 +81,12 @@ export default function AboutPage() {
                     </section>
 
                     {/* Section 2: Our Journey */}
-                    <section className="space-y-6 border-t border-gray-800 pt-12">
-                        <h2 className="text-3xl text-white font-header tracking-widest mb-4">
+                    <section className="space-y-8 border-t border-gray-800" style={{ paddingTop: '80px', marginTop: '80px' }}>
+                        <h2 className="text-2xl md:text-3xl text-white font-header tracking-widest mb-8">
                             OUR JOURNEY
                         </h2>
 
-                        <div className="text-lg leading-relaxed text-gray-400 space-y-6 max-w-4xl">
+                        <div className="text-lg leading-relaxed text-gray-400 space-y-8 max-w-4xl">
                             <p>
                                 The investigation began on <span className="text-white">April 1st, 2025</span>, when we dispatched our very first case file. Since that day, we have delivered over <span className="text-red-500 font-bold">5,000+ unsolved crime cases</span> to detectives across the country.
                             </p>
@@ -95,15 +97,15 @@ export default function AboutPage() {
                     </section>
 
                     {/* Section 3: Founder Profile */}
-                    <section className="space-y-8 border-t border-gray-800 pt-12">
-                        <h2 className="text-3xl text-white font-header tracking-widest mb-4">
-                            THE ARCHITECT
+                    <section className="space-y-8 border-t border-gray-800" style={{ paddingTop: '80px', marginTop: '80px' }}>
+                        <h2 className="text-2xl md:text-3xl text-white font-header tracking-widest mb-8">
+                            THE FOUNDER
                         </h2>
 
-                        <div className="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+                        <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
                             <div className="relative group">
                                 <div className="absolute -inset-2 bg-gradient-to-r from-red-900 to-black opacity-50 blur-lg group-hover:opacity-75 transition-opacity duration-500"></div>
-                                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm border md:border-2 border-gray-800 sepia-[.2] contrast-125 grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700">
+                                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md border md:border-2 border-gray-800 sepia-[.2] contrast-125 grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700">
                                     <Image
                                         src="/about/founder.jpg"
                                         alt="Muskan Khanna"
@@ -115,11 +117,11 @@ export default function AboutPage() {
                                 </div>
                                 <p className="text-center mt-4 text-sm font-mono text-gray-200 uppercase tracking-widest">
                                     Muskan Khanna<br />
-                                    <span className="text-xs text-red-500 font-bold">Founder & Lead Storyteller</span>
+                                    <span className="text-xs text-red-500 font-bold">Founder</span>
                                 </p>
                             </div>
 
-                            <div className="space-y-6 text-lg leading-relaxed text-gray-400">
+                            <div className="space-y-8 text-lg leading-relaxed text-gray-400">
                                 <h3 className="text-2xl text-white font-bold uppercase tracking-wider mb-2">
                                     Muskan Khanna
                                 </h3>
@@ -133,21 +135,21 @@ export default function AboutPage() {
                                     Beyond digital storytelling, Muskan is an accomplished writer. Having already made her mark in the literary world, she is currently an author working on her <span className="text-white">2nd book</span>, bringing her love for dark narratives to the printed page.
                                 </p>
 
-                                <div className="bg-black/40 border border-gray-800 p-6 rounded-lg mt-8">
-                                    <h4 className="text-sm text-gray-500 uppercase tracking-widest mb-4 border-b border-gray-800 pb-2">
+                                <div className="bg-black/40 border border-gray-800 p-6 rounded-lg mt-12">
+                                    <h4 className="text-sm text-gray-500 uppercase tracking-widest mb-8 border-b border-gray-800 pb-2">
                                         Connect with Muskan
                                     </h4>
                                     <ul className="grid sm:grid-cols-2 gap-4 text-base">
                                         <li className="flex items-center gap-2">
-                                            <span className="text-pink-500 text-xl">📸</span>
-                                            <a href="https://instagram.com/muskanarrates" className="text-gray-300 hover:text-white transition-colors">@muskanarrates</a>
+                                            <Instagram className="w-5 h-5 text-white" />
+                                            <a href="https://www.instagram.com/muskanarrates" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">@muskanarrates</a>
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <span className="text-red-500 text-xl">📺</span>
-                                            <span className="text-gray-300">YouTube: Muskan Khanna</span>
+                                            <Youtube className="w-5 h-5 text-white" />
+                                            <a href="https://youtube.com/@muskanarrates?si=43rw1ht1XUSwBMe5" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">YouTube: Muskan Khanna</a>
                                         </li>
                                         <li className="flex items-center gap-2 col-span-2">
-                                            <span className="text-blue-500 text-xl">✉️</span>
+                                            <Mail className="w-5 h-5 text-white" />
                                             <a href="mailto:muskankhanna2023@gmail.com" className="text-gray-300 hover:text-white transition-colors">muskankhanna2023@gmail.com</a>
                                         </li>
                                     </ul>
