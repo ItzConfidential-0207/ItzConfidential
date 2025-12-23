@@ -27,6 +27,7 @@ const VideoCard = ({ url }: { url: string }) => {
                 className="w-full h-full object-cover"
                 loop
                 playsInline
+                muted
             />
             {/* Play Button Overlay */}
             {!isPlaying && (
@@ -52,9 +53,11 @@ export default function EventsPage() {
         { id: 7, type: 'video-local', url: "/events/horrorcon/2.MOV", label: "Suspect Interrogation" },
 
 
+
         { id: 10, type: 'video-local', url: "/events/horrorcon/5.MOV", label: "The Reveal" },
         { id: 11, type: 'video-local', url: "/events/horrorcon/storytelling%20on%20event%202.MOV", label: "Storytelling Session" },
         { id: 12, type: 'video-local', url: "/events/horrorcon/storytelling%20on%20event.MOV", label: "The Setup" },
+        { id: 13, type: 'image', url: "/events/myBar/group_playing.jpg", label: "Solving the Case at My Bar" },
 
     ];
 
@@ -249,7 +252,7 @@ export default function EventsPage() {
                                                 {item.type === 'reel' && item.url ? (
                                                     <iframe
                                                         src={getEmbedUrl(item.url)}
-                                                        className="w-full h-full object-cover"
+                                                        className="w-full h-full object-cover scale-[1.50]"
                                                         frameBorder="0"
                                                         scrolling="no"
                                                         // @ts-expect-error: React warning requires lowercase, TS expects CamelCase
@@ -290,9 +293,9 @@ export default function EventsPage() {
                         <div className="relative">
                             <div className="absolute -inset-4 bg-red-900/20 rotate-1 rounded-lg"></div>
                             <div className="relative bg-[#1a1a1a] p-8 md:p-12 border-l-4 border-red-500 shadow-2xl">
-                                <h2 className="text-3xl md:text-4xl text-white font-black uppercase mb-8 text-center md:text-left">Successfully Hosted At:</h2>
+                                <h2 className="text-3xl md:text-4xl text-white font-black uppercase mb-20 text-center md:text-left" style={{ marginBottom: '5rem' }}>Successfully Hosted At:</h2>
 
-                                <ul className="space-y-6 text-lg text-gray-300 leading-relaxed list-none">
+                                <ul className="flex flex-col gap-6 text-lg text-gray-300 leading-relaxed list-none" style={{ gap: '1.5rem' }}>
                                     <li>
                                         <span className="text-red-500 font-bold text-xl">• Horror Con:</span> India’s biggest Halloween party, where we were the #1 top-selling stall.
                                     </li>
@@ -307,8 +310,8 @@ export default function EventsPage() {
                                     </li>
                                 </ul>
 
-                                <div className="mt-10 pt-8 border-t border-gray-800/50">
-                                    <p className="text-xl text-white font-bold mb-2">Book Us Today - <a href="tel:9289345359" className="text-red-500 hover:text-red-400 transition-colors">9289345359</a></p>
+                                <div className="mt-[8rem] pt-16 border-t border-gray-800/50 flex flex-col gap-6" style={{ marginTop: '8rem', paddingTop: '4rem' }}>
+                                    <p className="text-xl text-white font-bold">Book Us Today - <a href="tel:9289345359" className="text-red-500 hover:text-red-400 transition-colors">9289345359</a></p>
                                     <p className="text-xl text-white font-bold">Email - <a href="mailto:Muskankhanna2023@gmail.com" className="text-red-500 hover:text-red-400 transition-colors">Muskankhanna2023@gmail.com</a></p>
                                 </div>
                             </div>

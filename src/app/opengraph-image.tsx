@@ -15,6 +15,7 @@ export const contentType = 'image/png'
 export default async function Image() {
     return new ImageResponse(
         (
+            // ImageResponse JSX element
             <div
                 style={{
                     background: '#050505',
@@ -24,8 +25,8 @@ export default async function Image() {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontFamily: 'sans-serif',
-                    color: 'white',
+                    fontFamily: 'monospace',
+                    border: '20px solid #8B0000', // Dark Red Border
                 }}
             >
                 <div
@@ -34,30 +35,33 @@ export default async function Image() {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        border: '4px solid #333',
-                        padding: '40px 60px',
-                        background: '#111',
+                        backgroundColor: '#111',
+                        padding: '40px 80px',
+                        border: '2px dashed #333',
+                        boxShadow: '0 0 50px rgba(0,0,0,0.8)',
                     }}
                 >
                     <div
                         style={{
-                            fontSize: 60,
-                            fontWeight: 700,
-                            color: '#D90429', // Red
-                            letterSpacing: '4px',
-                            marginBottom: 20,
+                            fontSize: 80,
+                            fontWeight: 900,
+                            color: '#D90429',
                             textTransform: 'uppercase',
+                            letterSpacing: '10px',
+                            marginBottom: 0,
+                            display: 'flex',
                         }}
                     >
                         ITZ
                     </div>
                     <div
                         style={{
-                            fontSize: 60,
-                            fontWeight: 700,
+                            fontSize: 80,
+                            fontWeight: 900,
                             color: '#ffffff',
-                            letterSpacing: '4px',
                             textTransform: 'uppercase',
+                            letterSpacing: '5px',
+                            display: 'flex',
                         }}
                     >
                         CONFIDENTIAL
@@ -65,32 +69,42 @@ export default async function Image() {
 
                     <div
                         style={{
-                            marginTop: 30,
-                            fontSize: 24,
+                            marginTop: 40,
+                            fontSize: 30,
                             color: '#666',
+                            letterSpacing: '5px',
                             textTransform: 'uppercase',
-                            letterSpacing: '2px',
+                            display: 'flex',
                         }}
                     >
                         Solve The Mystery
                     </div>
                 </div>
 
-                {/* Simple Footer/Stamp */}
+                {/* Confidential Stamp */}
                 <div
                     style={{
-                        marginTop: 40,
-                        fontSize: 20,
-                        color: '#333',
+                        position: 'absolute',
+                        bottom: 40,
+                        right: 60,
+                        border: '8px solid rgba(139, 0, 0, 0.5)',
+                        color: 'rgba(139, 0, 0, 0.5)',
+                        fontSize: 40,
+                        fontWeight: 'bold',
+                        padding: '10px 20px',
                         textTransform: 'uppercase',
-                        letterSpacing: '2px',
+                        transform: 'rotate(-15deg)',
+                        display: 'flex',
                     }}
                 >
-          // Restricted Access //
+                    Restricted
                 </div>
             </div>
         ),
+        // ImageResponse options
         {
+            // For convenience, we can use a system font or load a custom one.
+            // Here we rely on default sans/mono mapping or simple text.
             ...size,
         }
     )
