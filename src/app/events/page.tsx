@@ -325,24 +325,24 @@ export default function EventsPage() {
                         </h2>
 
                         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-                            <div className="flex flex-col items-center gap-4 group cursor-pointer">
+                            <a href="https://wa.me/919289345359" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-4 group cursor-pointer">
                                 <div className="w-16 h-16 rounded-full bg-[#222] border border-gray-700 flex items-center justify-center text-red-500 group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
                                     <Phone size={32} />
                                 </div>
                                 <span className="text-gray-400 font-mono tracking-wider group-hover:text-white transition-colors">WhatsApp</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-4 group cursor-pointer">
+                            </a>
+                            <a href="mailto:Muskankhanna2023@gmail.com" className="flex flex-col items-center gap-4 group cursor-pointer">
                                 <div className="w-16 h-16 rounded-full bg-[#222] border border-gray-700 flex items-center justify-center text-red-500 group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
                                     <Mail size={32} />
                                 </div>
                                 <span className="text-gray-400 font-mono tracking-wider group-hover:text-white transition-colors">Email</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-4 group cursor-pointer">
+                            </a>
+                            <a href="https://www.instagram.com/itzconfidentialofficial?igsh=azFjcjhicmtodnQ1" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-4 group cursor-pointer">
                                 <div className="w-16 h-16 rounded-full bg-[#222] border border-gray-700 flex items-center justify-center text-red-500 group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
                                     <Instagram size={32} />
                                 </div>
                                 <span className="text-gray-400 font-mono tracking-wider group-hover:text-white transition-colors">@itz.confidential</span>
-                            </div>
+                            </a>
                         </div>
                     </section>
 
